@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES5",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "jsx": "react"
+    },
+    "filesGlob": [
+        "app/src/**/*.ts",
+        "app/src/**/*.tsx",
+        "server/**/*.ts",
+        "typings/tsd.d.ts"
+    ],
+    "files": [
+        "typings/tsd.d.ts",
+        "app/src/components/Base.ts",
+        "app/src/components/home/main.tsx",
+        "app/src/components/home/Timer/TimeItem/TimeItem.tsx",
+        "app/src/components/home/Timer/TimeList/TimeList.tsx",
+        "app/src/main.tsx",
+        "server/config/config.ts",
+        "server/config/utils.ts",
+        "server/server.ts"
+    ]
+}

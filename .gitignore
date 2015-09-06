@@ -1,0 +1,8 @@
+node_modules/
+typings/
+*.js
+*.js.map
+*.css
+*.css.map
+npm-debug.log
+server/config

@@ -1,0 +1,41 @@
+/**
+ * ___________________________________________________
+ *
+ *
+ *                     Pomodoro
+ *
+ *
+ *  45      50     55     0     5     10      15    20
+ *|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_
+ *                       /\
+ *
+ * 	 __Upcoming__   In Progress   ____Complete___
+ *   - Todo Store	- Todo item   - Todo complete
+ * 	 - Todo Store	- Todo item   - Todo complete
+ *
+ *
+ *
+ * ___________________________________________________
+ *
+ */
+
+//  const data = {
+// 	 todos: [
+// 		 {
+// 			 status: 'upcoming',
+// 			 description: 'Finish the pomodoro tracker',
+// 			 created: new Date()
+// 		 },
+// 		 {
+// 			 status: 'progress',
+// 			 description: 'Finish the pomodoro tracker',
+// 			 created: new Date()
+// 		 },
+// 		 {
+// 			 status: 'complete',
+// 			 description: 'Finish the pomodoro tracker',
+// 			 created: new Date()
+// 		 }
+// 	 ],
+// 	 secondsLeft: 60 * 25
+//  };

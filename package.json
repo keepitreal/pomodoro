@@ -1,0 +1,41 @@
+{
+  "name": "React-Express-Typescript-Starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "bundle": "browserify -t [reactify] app/src/main.js -o app/dist/main.js",
+    "build:ts": "npm run ts && npm run bundle",
+    "build": "npm run ts && npm run bundle",
+    "prepublish": "npm run tsd && mkdirp app/dist",
+    "sass": "node-sass app/src/main.scss > app/dist/main.css",
+    "server": "nodemon -w server --harmony -e js,json,ejs --delay 4 --debug",
+    "start": "npm run build && concurrent -r -k \"npm run watch\" \"npm run server\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts": "tsconfig && tsc -p .",
+    "tsconfig": "tsconfig",
+    "tsd": "tsd update -so && tsd link",
+    "watch": "concurrent -r -k \"npm run watch:sass\" \"npm run watch:ts\" \"npm run watch:bundle\"",
+    "watch:bundle": "watchify app/src/main.js -d -t -o app/dist/main.js -v",
+    "watch:sass": "nodemon -q -w app -e scss -x npm run sass",
+    "watch:ts": "npm run ts -- -w"
+  },
+  "author": "Darion Welch",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^11.0.1",
+    "concurrently": "^0.1.1",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.2.0",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "tsconfig-glob": "^0.1.3",
+    "typescript": "^1.6.0-dev.20150822"
+  },
+  "devDependencies": {
+    "nodemon": "^1.4.1",
+    "watchify": "^3.3.1"
+  }
+}
