@@ -5,16 +5,20 @@ export default class TimeList extends React.Component<any, any> {
 	state = {
 		isDragging: false,
 		lastDragX: null,
-		lastDragIncr: 0,
 		dragBy: null,
-		minutes: [],
 		minuteWidth: null,
+		initialPos: 0
 	};
 
 	componentWillMount() {
+		const minuteWidth = window.innerWidth / (this.props.minutes.length - this.props.numHiddenMinutes);
+		const initialPos = -(minuteWidth * (this.props.numHiddenMinutes / 4);
+
 		this.setState({
 			minutes: this.props.minutes,
-			minuteWidth: window.innerWidth / (this.props.minutes.length - 2)
+			minuteWidth: minuteWidth,
+			dragBy: initialPos,
+			initialPos: initialPos
 		});
 	}
 
@@ -30,20 +34,22 @@ export default class TimeList extends React.Component<any, any> {
 
 		if (state.isDragging) {
 			const dragBy = state.dragBy + (ev.screenX - state.lastDragX);
-			const lastDragIncr = state.lastDragIncr;
 			const itemWidth = window.innerWidth;
-			const minutes = this.state.minutes;
+			const minutes = this.props.minutes;
 			const incr = dragBy < 0 ? -1 : 1;
+			const initialPos = this.state.initialPos;
 
-			if (Math.abs(dragBy) - this.state.minuteWidth < 1) {
+			if (Math.abs(dragBy) > Math.abs(initialPos) * 2) {
+				dragBy = this.state.initialPos;
 				this.props.setMinutes(() => incr);
 			}
 
 			this.setState({
-				lastDragIncr: lastDragIncr,
 				dragBy: dragBy,
 				lastDragX: ev.screenX
 			});
+
+
 		}
 	}
 
@@ -55,10 +61,14 @@ export default class TimeList extends React.Component<any, any> {
 
 	render() {
 		const itemWidth = -this.state.minuteWidth;
-		const transform = { left: this.state.dragBy + itemWidth || itemWidth };
-		const TimeItems = this.state.minutes.map((minute)=> {
+		const leftPos = this.state.dragBy ? this.state.dragBy + itemWidth : this.state.dragBy;
+		const transform: any = { left: leftPos };
+		const TimeItems = this.props.minutes.map((minute)=> {
 			return (
-				<TimeItem minute={minute} key={minute} numMinutes={this.state.minutes.length - 2} />
+				<TimeItem
+					minute={minute}
+					key={minute}
+					numMinutes={this.props.minutes.length - this.props.numHiddenMinutes} />
 			);
 		});
 

@@ -8,10 +8,11 @@ export interface IAppState {
 export default class Home extends React.Component<any, IAppState> {
 	state = {
 		minutes: [],
-		numMinutes: 27
+		numMinutes: 29,
+		numHiddenMinutes: 4
 	}
 
-	generateMinutes(minuteLimit: number = 60) {
+	generateMinutes(minuteLimit: number = 60): Array<number> {
 		let minutes = [];
 
 		for (let i = 0; i < minuteLimit; i++) {
@@ -33,11 +34,12 @@ export default class Home extends React.Component<any, IAppState> {
 		return (
 			<Timer
 				minutes={this.sliceArray(state.minutes, 0, state.numMinutes)}
+				numHiddenMinutes={this.state.numHiddenMinutes}
 				setMinutes={(cb) => this.setMinutes(cb)} />
 		);
 	}
 
-	setMinutes(cb: Function => number) {
+	setMinutes(cb: Function): void {
 		const state = this.state;
 		const minutes = state.minutes;
 

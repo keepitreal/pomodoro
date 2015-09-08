@@ -7,7 +7,7 @@ export default class TimeItem extends React.Component<any, any> {
 		};
 
 		return (
-			<li className="TimeItem" style={width}>| {this.props.minute} |</li>
+			<li className="TimeItem" style={width}>{this.props.minute}</li>
 		);
 	}
 }

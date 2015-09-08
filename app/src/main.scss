@@ -3,16 +3,4 @@
 @import './components/home/Timer/TimeItem/TimeItem.scss';
 @import './components/home/main.scss';
 
-/// Global Rules
-html, body {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	height: 100%;
-	width: 100%;
-	overflow-x: hidden;
-}
 
-*, *:after, *:before {
-	box-sizing: inherit;
-}
