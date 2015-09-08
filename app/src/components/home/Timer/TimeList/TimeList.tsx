@@ -12,7 +12,7 @@ export default class TimeList extends React.Component<any, any> {
 
 	componentWillMount() {
 		const minuteWidth = window.innerWidth / (this.props.minutes.length - this.props.numHiddenMinutes);
-		const initialPos = -(minuteWidth * (this.props.numHiddenMinutes / 4);
+		const initialPos = -(minuteWidth * (this.props.numHiddenMinutes / 4));
 
 		this.setState({
 			minutes: this.props.minutes,
@@ -33,10 +33,10 @@ export default class TimeList extends React.Component<any, any> {
 		const state = this.state;
 
 		if (state.isDragging) {
-			const dragBy = state.dragBy + (ev.screenX - state.lastDragX);
+			let dragBy = state.dragBy + (ev.screenX - state.lastDragX);
 			const itemWidth = window.innerWidth;
 			const minutes = this.props.minutes;
-			const incr = dragBy < 0 ? -1 : 1;
+			const incr = dragBy < 0 ? 1 : -1;
 			const initialPos = this.state.initialPos;
 
 			if (Math.abs(dragBy) > Math.abs(initialPos) * 2) {
@@ -48,8 +48,6 @@ export default class TimeList extends React.Component<any, any> {
 				dragBy: dragBy,
 				lastDragX: ev.screenX
 			});
-
-
 		}
 	}
 

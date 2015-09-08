@@ -8,13 +8,5 @@
 	padding: 0;
 	margin: 0;
 	border-bottom: 2px solid #eeeeee;
-
-	& > li > span {
-		display: none;
-	}
-
-	& > li:nth-child(5n+1) > span {
-		display: inline;
-	}
 }
 

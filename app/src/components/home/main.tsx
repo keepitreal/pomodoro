@@ -9,6 +9,7 @@ export default class Home extends React.Component<any, IAppState> {
 	state = {
 		minutes: [],
 		numMinutes: 29,
+		minuteStart: 46,
 		numHiddenMinutes: 4
 	}
 
@@ -33,7 +34,7 @@ export default class Home extends React.Component<any, IAppState> {
 
 		return (
 			<Timer
-				minutes={this.sliceArray(state.minutes, 0, state.numMinutes)}
+				minutes={this.sliceArray(state.minutes, state.minuteStart, state.numMinutes)}
 				numHiddenMinutes={this.state.numHiddenMinutes}
 				setMinutes={(cb) => this.setMinutes(cb)} />
 		);
@@ -44,7 +45,7 @@ export default class Home extends React.Component<any, IAppState> {
 		const minutes = state.minutes;
 
 		this.setState({
-			minutes: this.sliceArray(minutes, minutes[0] + cb(), state.numMinutes)
+			minuteStart: state.minuteStart + cb()
 		});
 	}
 
