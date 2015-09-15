@@ -1,7 +1,6 @@
 .TimeList {
 	position: absolute;
-	height: 20em;
-	max-height: 40%;
+	height: $timer-height;
 	width: 100%;
 	white-space: nowrap;
 	list-style: none;

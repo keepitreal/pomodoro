@@ -1,7 +1,22 @@
 import * as React from 'react';
 import TimeItem from '../TimeItem/TimeItem';
 
-export default class TimeList extends React.Component<any, any> {
+interface ITimeListState {
+	isDragging: boolean;
+	lastDragX: number;
+	dragBy: number;
+	minuteWidth: number;
+	initialPos: number;
+}
+
+interface ITimeListProps {
+	minutes: Array<number>;
+	numHiddenMinutes: number;
+	setMinutes: Function;
+	getMilliseconds: (Function) => void;
+}
+
+export default class TimeList extends React.Component<ITimeListProps, ITimeListState> {
 	state = {
 		isDragging: false,
 		lastDragX: null,
@@ -19,14 +34,14 @@ export default class TimeList extends React.Component<any, any> {
 			minuteWidth: minuteWidth,
 			dragBy: initialPos,
 			initialPos: initialPos
-		});
+		} as any);
 	}
 
 	startDrag(ev) {
 		this.setState({
 			lastDragX: ev.screenX,
 			isDragging: true
-		});
+		} as any);
 	}
 
 	monitorDrag(ev) {
@@ -36,10 +51,10 @@ export default class TimeList extends React.Component<any, any> {
 			let dragBy = state.dragBy + (ev.screenX - state.lastDragX);
 			const itemWidth = window.innerWidth;
 			const minutes = this.props.minutes;
-			const incr = dragBy < 0 ? 1 : -1;
 			const initialPos = this.state.initialPos;
+			const incr = dragBy < initialPos ? 1 : -1;
 
-			if (Math.abs(dragBy) > Math.abs(initialPos) * 2) {
+			if (dragBy < initialPos * 2 || dragBy > 0) {
 				dragBy = this.state.initialPos;
 				this.props.setMinutes(() => incr);
 			}
@@ -47,14 +62,22 @@ export default class TimeList extends React.Component<any, any> {
 			this.setState({
 				dragBy: dragBy,
 				lastDragX: ev.screenX
-			});
+			} as any);
 		}
 	}
 
 	endDrag(ev) {
+		const middleIndex = Math.floor(this.props.minutes.length / 2);
+		const minute = this.props.minutes[middleIndex];
+		const seconds = ((Math.abs(this.state.dragBy) - this.state.minuteWidth) / this.state.minuteWidth) * 60;
+
 		this.setState({
 			isDragging: false
-		});
+		} as any);
+
+		this.props.getMilliseconds(() => {
+			return (minute * 1000 * 60) + Math.floor(seconds * 1000);
+		})
 	}
 
 	render() {
@@ -69,7 +92,6 @@ export default class TimeList extends React.Component<any, any> {
 					numMinutes={this.props.minutes.length - this.props.numHiddenMinutes} />
 			);
 		});
-
 
 		return (
 			<ul className="TimeList"

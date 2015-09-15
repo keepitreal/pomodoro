@@ -1,10 +1,45 @@
+$num-distance: 1.5em;
+
 .TimeItem {
-	height: 100%;
-	display: inline-block;
-	width: 100% / 25;
-	-moz-user-select: none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    width: 100% / 25;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+
+    &:active {
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+        cursor: grabbing;
+    }
+
+    &:after {
+        $marker-height: $num-distance * 0.75;
+
+        content: '';
+        position: relative;
+        display: inline-block;
+        //top: calc('100% - ${marker-height}');
+        top: calc(100% - 1.1em);
+        height: $marker-height;
+        width: 3px;
+        background-color: $accent-grey;
+    }
+
+    & > span {
+        position: absolute;
+        bottom: $num-distance;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
 }

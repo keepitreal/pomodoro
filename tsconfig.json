@@ -16,13 +16,18 @@
     ],
     "files": [
         "typings/tsd.d.ts",
+        "app/src/actions/BaseActions.ts",
         "app/src/components/Base.ts",
+        "app/src/constants/TimerConstants.ts",
+        "app/src/utils/Dispatcher.ts",
+        "app/src/utils/utils.ts",
         "app/src/components/home/main.tsx",
-        "app/src/components/home/Timer/TimeItem/TimeItem.tsx",
+        "app/src/actions/TimerActions.ts",
         "app/src/components/home/Timer/TimeList/TimeList.tsx",
         "app/src/main.tsx",
         "server/config/config.ts",
         "server/config/utils.ts",
-        "server/server.ts"
+        "server/server.ts",
+        "app/src/components/home/Timer/TimeItem/TimeItem.tsx"
     ]
 }

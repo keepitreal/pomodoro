@@ -1,10 +1,14 @@
 import * as React from 'react';
-import Home from './components/home/main';
+import TopElement from './components/home/main';
 
-class Main extends React.Component<any, any> {
-	render() {
+interface IMainProps {}
+interface IMainState {}
+interface IMain extends JSX.ElementClass {}
+
+class Main extends React.Component<IMainProps, IMainState> {
+	render(): JSX.Element {
 		return (
-			<Home />
+			<TopElement />
 		);
 	}
 }

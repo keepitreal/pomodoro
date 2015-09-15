@@ -6,8 +6,20 @@ html, body {
 	height: 100%;
 	width: 100%;
 	overflow-x: hidden;
+	text-align: center;
 }
 
 *, *:after, *:before {
 	box-sizing: inherit;
+}
+
+.pointer {
+	position: relative;
+	top: $timer-height + 1em;
+	display: inline-block;
+	height: 0;
+	width: 0;
+	border-bottom: 10px solid $accent-grey;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
 }
