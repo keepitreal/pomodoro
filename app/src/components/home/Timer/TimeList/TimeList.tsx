@@ -1,5 +1,7 @@
 import * as React from 'react';
 import TimeItem from '../TimeItem/TimeItem';
+import TimerActions from '../../../../actions/TimerActions';
+import TimerStore from '../../../../stores/TimerStore';
 
 interface ITimeListState {
 	isDragging: boolean;
@@ -12,7 +14,6 @@ interface ITimeListState {
 interface ITimeListProps {
 	minutes: Array<number>;
 	numHiddenMinutes: number;
-	setMinutes: Function;
 	getMilliseconds: (Function) => void;
 }
 
@@ -56,7 +57,7 @@ export default class TimeList extends React.Component<ITimeListProps, ITimeListS
 
 			if (dragBy < initialPos * 2 || dragBy > 0) {
 				dragBy = this.state.initialPos;
-				this.props.setMinutes(() => incr);
+				TimerActions.updateMinutes(incr);
 			}
 
 			this.setState({

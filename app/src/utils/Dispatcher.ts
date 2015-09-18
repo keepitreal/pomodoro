@@ -16,5 +16,4 @@ export interface IDispatchPayload {
 	payload: any;
 }
 
-let dispatcher = new AppDispatcher();
-export default dispatcher;
+export default new AppDispatcher();
