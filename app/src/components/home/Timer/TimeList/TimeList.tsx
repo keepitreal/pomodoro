@@ -14,7 +14,6 @@ interface ITimeListState {
 interface ITimeListProps {
 	minutes: Array<number>;
 	numHiddenMinutes: number;
-	getMilliseconds: (Function) => void;
 }
 
 export default class TimeList extends React.Component<ITimeListProps, ITimeListState> {
@@ -68,17 +67,11 @@ export default class TimeList extends React.Component<ITimeListProps, ITimeListS
 	}
 
 	endDrag(ev) {
-		const middleIndex = Math.floor(this.props.minutes.length / 2);
-		const minute = this.props.minutes[middleIndex];
-		const seconds = ((Math.abs(this.state.dragBy) - this.state.minuteWidth) / this.state.minuteWidth) * 60;
-
 		this.setState({
 			isDragging: false
 		} as any);
 
-		this.props.getMilliseconds(() => {
-			return (minute * 1000 * 60) + Math.floor(seconds * 1000);
-		})
+		TimerActions.setTimer((Math.abs(this.state.dragBy) - this.state.minuteWidth) / this.state.minuteWidth);
 	}
 
 	render() {

@@ -19,7 +19,7 @@ export default class Home extends React.Component<IHomeProps, IHomeProps> {
 
 	private onChange() {
 		this.setState({
-			minutes: TimerStore.getVisibleMinutes()
+			minutes: TimerStore.visibleMinutes
 		} as any);
 	}
 
@@ -39,14 +39,9 @@ export default class Home extends React.Component<IHomeProps, IHomeProps> {
 			<div>
 				<Timer
 					minutes={this.state.minutes}
-					numHiddenMinutes={this.state.numHiddenMinutes}
-					getMilliseconds={(cb) => {this.getMilliseconds(cb)}} />
+					numHiddenMinutes={this.state.numHiddenMinutes} />
 				<span className="pointer" />
 			</div>
 		);
-	}
-
-	getMilliseconds(cb: () => number): void {
-		console.log(cb());
 	}
 }
