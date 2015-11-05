@@ -13,14 +13,36 @@ export default class Home extends React.Component<IHomeProps, IHomeProps> {
 	state: IHomeState = {
 		minutes: [],
 		numHiddenMinutes: 4
-	}
+	};
 
-	props: IHomeProps = {}
+	interval: NodeJS.Timer;
+	timeout: any;
+
+	props: IHomeProps = {};
 
 	private onChange() {
 		this.setState({
 			minutes: TimerStore.visibleMinutes
 		} as any);
+
+		this.clearTimer();
+		this.startTimer(TimerStore.milliseconds);
+	}
+
+	startTimer(ms: number): void {
+		console.log(ms);
+		this.interval = setInterval(() => {
+			console.log('move');
+		}, 200);
+
+		this.timeout = setTimeout(() => {
+			clearInterval(this.interval);
+		}, ms);
+	}
+
+	clearTimer(): void {
+		clearTimeout(this.timeout);
+		clearInterval(this.interval);
 	}
 
 	componentWillMount() {

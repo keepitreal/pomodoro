@@ -19,6 +19,7 @@
         "app/src/actions/BaseActions.ts",
         "app/src/components/Base.ts",
         "app/src/constants/TimerConstants.ts",
+        "app/src/stores/BaseStore.ts",
         "app/src/stores/TimerStore.ts",
         "app/src/utils/Dispatcher.ts",
         "app/src/utils/utils.ts",

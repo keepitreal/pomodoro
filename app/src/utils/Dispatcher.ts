@@ -1,7 +1,7 @@
 import {Dispatcher} from 'flux';
 
 class AppDispatcher extends Dispatcher<IDispatchPayload> {
-	handleAction(action, response) {
+	handleAction(action, response?) {
 		this.dispatch({
 			source: 'VIEW_ACTION',
 			actionType: action,

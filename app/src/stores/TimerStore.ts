@@ -21,7 +21,6 @@ class TimerStoreStatic extends BaseStore {
 	}
 
 	set milliseconds(ms: number) {
-		console.log(ms);
 		this._milliseconds =  ms;
 	}
 
@@ -44,7 +43,7 @@ export default timerStore;
 	let incr: number = null;
 	let seconds: number = null;
 
-	console.log(action);
+	console.log(action.actionType);
 
 	switch (action.actionType) {
 		case TimerStore.TIMER_UPDATE_MINUTES:
@@ -54,6 +53,8 @@ export default timerStore;
 		case TimerStore.TIMER_SET:
 			seconds = action.payload * 60;
 			timerStore.setMilliseconds(seconds);
+			break;
+		case TimerStore.TIMER_PAUSE:
 			break;
 		default:
 			// noop

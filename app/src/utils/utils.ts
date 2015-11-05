@@ -6,12 +6,14 @@ export default class Utils {
 			return {};
 		}
 
-		return keys.map((value: string) => {
+		let obj = {};
+
+		keys.map((value: string) => {
 			value = prefix + '_' + value;
-			let obj = {};
 			obj[value] = value;
-			return obj;
-		})
+		});
+
+		return obj;
 	};
 
 	static createOrderedArray(from: number, to: number): Array<number> {

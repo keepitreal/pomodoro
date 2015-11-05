@@ -12,8 +12,11 @@ class TimerActions extends BaseActions {
 	}
 
 	setTimer(minuteFraction: number): void {
-		console.log(this.constants);
 		Dispatcher.handleAction(this.constants.TIMER_SET, minuteFraction);
+	}
+
+	pauseTimer(): void {
+		Dispatcher.handleAction(this.constants.TIMER_PAUSE);
 	}
 }
 
