@@ -6,25 +6,28 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "express/express.d.ts": {
-      "commit": "fa8d9683f37d07ed79617a6e037916c6718aeb11"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     },
     "flux/flux.d.ts": {
-      "commit": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     },
     "lodash/lodash.d.ts": {
-      "commit": "7a3ca1f0b8a0960af9fc1838f3234cc9d6ce0645"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     },
     "react/react.d.ts": {
-      "commit": "fa8d9683f37d07ed79617a6e037916c6718aeb11"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     },
     "node/node.d.ts": {
-      "commit": "fa8d9683f37d07ed79617a6e037916c6718aeb11"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     },
     "mime/mime.d.ts": {
-      "commit": "fa8d9683f37d07ed79617a6e037916c6718aeb11"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "fa8d9683f37d07ed79617a6e037916c6718aeb11"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
+    },
+    "react/react-dom.d.ts": {
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     }
   }
 }

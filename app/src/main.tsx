@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import TopElement from './components/home/main';
 
 interface IMainProps {}
@@ -13,4 +14,4 @@ class Main extends React.Component<IMainProps, IMainState> {
 	}
 }
 
-React.render(React.createElement(Main), document.body);
+ReactDOM.render(React.createElement(Main), document.getElementById('mountNode'));
